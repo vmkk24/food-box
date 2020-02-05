@@ -1,0 +1,13 @@
+.media {
+    display: inherit;
+}
+.input-container{
+    display: flex;
+}
+.input-width{
+    width: 16%;
+}
+.button-add {
+    padding: 1px 12px;
+    font-weight: 600;
+}

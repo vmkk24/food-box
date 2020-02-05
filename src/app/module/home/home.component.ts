@@ -26,15 +26,15 @@ export class HomeComponent implements OnInit {
   /* get products list */
   private geProductList(): void {
     this.spinner = true;
-    this.api.getList(this.url.urlConfig().products).subscribe(products => {
-      if (products) {
-        this.spinner = false;
-        this.productList = products;
-        this.laptopList = products.filter(laptop => laptop.type === 'laptop');
-      }
-    }, error => {
-      this.spinner = false;
-    });
+    // this.api.getList(this.url.urlConfig().products).subscribe(products => {
+    //   if (products) {
+    //     this.spinner = false;
+    //     this.productList = products;
+    //     this.laptopList = products.filter(laptop => laptop.type === 'laptop');
+    //   }
+    // }, error => {
+    //   this.spinner = false;
+    // });
   }
 
   /* Navigate to group Page */
