@@ -11,7 +11,7 @@
             <i class="pi pi-user"></i>
               Login
             </a>
-            <button style="padding: 0%;" *ngIf="userDetails?.employeeId" class="btn btn-success btn-logout" (click)="logout()"><i class="pi pi-user"></i>Logout</button>
+            <button  *ngIf="userDetails?.employeeId" class="btn btn-primary btn-logout" (click)="logout()"><i class="pi pi-user"></i>Logout</button>
           </li>
           <li>
             <div class="cart dropdown">
