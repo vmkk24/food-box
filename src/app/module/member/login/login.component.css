@@ -1,7 +1,11 @@
 .login-container{
     margin-top: 7%;
-    margin-bottom: 7%;
+    /* margin-bottom: 7%; */
     min-height: 390px;
+    font-size: large;
 }
 
 
+.form-control{
+    font-size: 2rem !important;
+}

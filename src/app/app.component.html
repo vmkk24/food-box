@@ -1,4 +1,29 @@
 <app-header></app-header>
+	<!-- MENU Start
+    ================================================== -->
+    <div style="text-align: center;">
+        <img src="assets/images/logo.png" alt="Los Angeles" style="height: 6rem;">
+      </div>
+	<nav class="navbar navbar-expand-sm navbar-dark  " style="background-color:orange">
+        <div class="container-fluid">
+          <a class="navbar-brand"><b>Meal Box</b></a>
+          <div class="collapse navbar-collapse">
+          
+            <span style="color: white;">Welcome, {{user?.name}}</span>
+            <ul class="navbar-nav ml-auto" >
+                <li><a routerLink="home" class="nav-link">Home</a></li>
+                <li><a routerLink="shops" class="nav-link">shops</a></li>
+                <!-- <li *ngIf="user?.role == ['admin']"><a routerLink="admin" class="nav-link">Admin Dashboard</a></li>
+                <li *ngIf="user?.role != ['admin']"><a routerLink="dashboard" class="nav-link">Dashboard</a></li> -->
+              <!-- <li class="mt-3">
+                <button type="button" (click)="logout()" class="nav-link btn btn-warning">LogOut</button>
+              </li> -->
+            </ul>
+
+          </div>
+        </div>
+      </nav>
+      
 <main role="main" class="container">
     <router-outlet></router-outlet>
 </main>

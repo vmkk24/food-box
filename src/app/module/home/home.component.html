@@ -1,57 +1,36 @@
-<div class="home-container">
-    <div class="row padding-adjust">
-        <div class="col-md-12 padding-shadow">
-            <h5 class="heading"> Mobiles </h5>
-            <div class="row">
-                <div class="col-md-3">
-                    <a routerLink="/list/mobile" class="btn btn-primary join btn-position">View All</a>
-                </div>
-                <div *ngFor="let mobile of productList; let i=index" class="col-md-3">
-                    <div *ngIf="mobile.type === 'mobile' &&  i < 3">
-                        <p-card header="{{mobile.name}}">
-                            <div class="text-center">
-                                <img src="../assets/img/shopping/{{mobile.image}}.jpeg" width="60px" height="120px"
-                                    alt="{{mobile.image}}.jpeg" /></div>
-                            <p>Ram: {{mobile.ram}} GB</p>
-                            <p>Memory: {{mobile.memory}} GB</p>
-                            <p>Rs.{{mobile.price}}</p>
-                            <button class="btn btn-primary join"
-                                (click)="navigateGroupPage('mobile',mobile)">
-                                View</button>
-                        </p-card>
-                    </div>
-                </div>
-            </div>
+<div class="container">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+  
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src="assets/images/slider.jpg" alt="Los Angeles" style="width:100%;">
         </div>
-        <div class="col-md-12 padding-shadow mt-10">
-            <h5  class="heading"> Laptops </h5>
-            <div class="row">
-                <div class="col-md-3">
-                    <a routerLink="/list/laptop" class="btn btn-primary join btn-position ">View All</a>
-                </div>
-                <div *ngFor="let lap of laptopList; let i = index" class="col-md-3">
-                    <div *ngIf="lap.type === 'laptop' &&   i < 3">
-                        <p-card header="{{lap.name}}">
-                            <div class="text-center">
-                                <img src="../assets/img/shopping/{{lap.image}}.jpeg" width="150px" height="120px"
-                                    alt="{{lap.image}}.jpeg" />
-                            </div>
-                            <p>Ram: {{lap.ram}} GB</p>
-                            <p>Memory: {{lap.memory}} GB</p>
-                            <p> Rs.{{lap.price}} </p>
-                            <button class="btn btn-primary join " (click)="navigateGroupPage('laptop',lap)">
-                                View</button>
-                        </p-card>
-                    </div>
-                </div>
-
-            </div>
+  
+        <div class="item">
+          <img src="assets/images/slider1.jpg" alt="Chicago" style="width:100%;">
         </div>
-        <div class="no-group" *ngIf="!productList?.length">
-            <p-card header="No products are available"></p-card>
+      
+        <div class="item">
+          <img src="assets/images/slider2.jpg" alt="New york" style="width:100%;">
         </div>
+      </div>
+  
+      <!-- Left and right controls -->
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="sr-only">Next</span>
+      </a>
     </div>
-</div>
-<app-alert [alertObj]="api.alertConfig" *ngIf="api.alertConfig?.modalShow" (buttonAction)="modalAction($event)">
-</app-alert>
-<app-spinner [spinner]="spinner"></app-spinner>
+    
+  </div>
