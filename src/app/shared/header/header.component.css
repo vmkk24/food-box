@@ -42,6 +42,6 @@
     top: 3px;
 }
 .btn-logout {
-    position: absolute;
+    position: relative;
     right: 0;
 }
