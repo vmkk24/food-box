@@ -2,10 +2,24 @@
     display: block;
     background: #292525a1;
 }
+.fade{
+    opacity: 1!important;
+}
 .show .modal-dialog{
     position: relative;
-    top: 12%;
+    top: 20%;
 }
 .btn-primary:hover{
     background: #ff6200;
+}
+.modal-body p {
+    padding-top: 6%;
+    text-align: center;
+}
+.modal-footer {
+    margin: 0 auto;
+    border-top: none;
+}
+.modal-header {
+    border-bottom: none;
 }

@@ -12,7 +12,8 @@ export class UrlConfig {
             userList: this.apiMock + 'users',
             vendorMenu: this.apiMock + 'ItemcategoryList',
             brand: this.apiMock + 'brands',
-            vendors: this.apiHost + 'vendors'
+            vendors: this.apiHost + 'vendors',
+            placeOrder: this.apiMock + 'employees',
         };
     }
     urlConfig() {

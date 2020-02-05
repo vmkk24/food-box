@@ -57,6 +57,7 @@ export class ListComponent implements OnInit {
         this.foodList[index].quantity += 1;
       } else {
         this.foodList.push({
+          foodName: item.foodName,
           foodId: item.foodId,
           quantity: item.quantity,
           price: item.price
@@ -64,6 +65,7 @@ export class ListComponent implements OnInit {
       }
     } else {
       this.foodList.push({
+        foodName: item.foodName,
         foodId: item.foodId,
         quantity: item.quantity,
         price: item.price
