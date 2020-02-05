@@ -7,28 +7,15 @@
       <div class="col-md-3 clearfix">
         <ul class="login-cart">
           <li>
-            <a  routerLink="login">
+            <a  routerLink="login" *ngIf="!userDetails?.employeeId">
             <i class="pi pi-user"></i>
               Login
             </a>
+            <button *ngIf="userDetails?.employeeId" class="btn btn-primary btn-logout" (click)="logout()">Logout</button>
           </li>
           <li>
             <div class="cart dropdown">
-                <a routerLink="login"><i class="pi pi-shopping-cart"></i>Cart</a>
-                <div class="dropdown-menu dropup">
-                  <span class="caret"></span>
-                  <ul class="media-list">
-                    <li class="media">
-                      <img class="pull-left" src="assets/images/product-item.jpg" alt="image">
-                      <div class="media-body">
-                          <h6>Italian Sauce
-                          <span>$250</span>
-                        </h6>
-                      </div>
-                    </li>
-                </ul>
-                <button class="btn btn-primary btn-sm">Checkout</button>
-                </div>
+                <a href="javascript:void(0)" (click)="navigateCartPage()"><i class="pi pi-shopping-cart"></i>Cart {{userDetails?.cart ? userDetails?.cart?.length : 0}}</a>
             </div>
           </li>
         </ul>

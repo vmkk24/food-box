@@ -25,15 +25,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.userDetails = userData;
       } else {
         this.userDetails = {
-          name: null,
-          id: null,
-          gender: null,
+          employeeName: null,
+          employeeId: null,
+          role: null,
           cart: []
         };
       }
     });
   }
-  /* Navigate to group page */
+  /* Navigate to cart page */
   public navigateCartPage() {
     if (this.userDetails.cart.length > 0) {
       this.router.navigate(['/cart']);

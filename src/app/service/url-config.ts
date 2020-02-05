@@ -6,9 +6,10 @@ export class UrlConfig {
     private apiMock = 'http://localhost:3000/';
     url = {};
 
-    urlApi() {
+    /* url config with url Mock list */
+    urlMock() {
         return this.url = {
-            userLogin: this.apiMock + 'users',
+            userLogin: 'http://10.117.189.175:8080/mealbox/' + 'employees',
             userList: this.apiMock + 'users',
             vendorMenu: this.apiMock + 'ItemcategoryList',
             brand: this.apiMock + 'brands',
@@ -17,7 +18,20 @@ export class UrlConfig {
             orderSummary: this.apiMock + 'employees',
         };
     }
+    /* url config with url Server list */
+    urlApi() {
+        return this.url = {
+            userLogin: this.apiHost + 'employees',
+            userList: this.apiHost + 'users',
+            vendorMenu: this.apiHost + 'vendors/',
+            vendors: this.apiHost + 'vendors',
+            placeOrder: this.apiHost + 'employees',
+            orderSummary: this.apiHost + 'employees',
+        };
+    }
+
+     /* return url */
     urlConfig() {
-        return  this.urlApi() ;
+        return  this.serverConfig ? this.urlApi() : this.urlMock() ;
     }
 }

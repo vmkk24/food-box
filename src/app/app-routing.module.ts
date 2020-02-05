@@ -9,15 +9,18 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import(`./module/home/home.module`).then(m => m.HomeModule)
+    loadChildren: () => import(`./module/home/home.module`).then(m => m.HomeModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'shops',
-    loadChildren: () => import(`./module/shops/shops.module`).then(m => m.ShopsModule)
+    loadChildren: () => import(`./module/shops/shops.module`).then(m => m.ShopsModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'vendor',
-    loadChildren: () => import(`./module/vendor/vendor.module`).then(m => m.VendorModule)
+    loadChildren: () => import(`./module/vendor/vendor.module`).then(m => m.VendorModule),
+    canActivate: [AuthGuard]
   }
 ];
 @NgModule({
