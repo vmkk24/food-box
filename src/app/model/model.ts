@@ -10,9 +10,9 @@ export interface User {
     id: number;
 }
 export interface CurrentUser {
-    name: string;
-    id: number;
-    gender: string;
+    role: string;
+    employeeId: number;
+    employeeName: string;
     cart: [];
 }
 

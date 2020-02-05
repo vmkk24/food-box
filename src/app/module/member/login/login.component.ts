@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   ) { }
   private createForm() {
     this.loginForm = this.fb.group({
-      username: ['', Validators.required],
+      employeeId: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
@@ -31,29 +31,30 @@ export class LoginComponent implements OnInit {
   /* Login */
   public onClickSubmit() {
     this.submitted = true;
+
     if (this.loginForm.valid) {
-      const urlString = '?username=' + this.loginForm.value.username +
-        '&password=' + this.loginForm.value.password;
       this.spinner = true;
+      const postObject = {
+        employeeId: Number(this.loginForm.value.employeeId),
+        password: this.loginForm.value.password
+      };
       /* Api call*/
-      this.api.getList(this.url.urlConfig().userLogin.concat(urlString)).subscribe(user => {
-        if (user.length) {
+      this.api.postCall(this.url.urlConfig().userLogin, postObject, 'post').subscribe(user => {
+        if (user.employeeId) {
           const userDetails = {
-            name: user[0].firstName,
-            id: user[0].id,
-            gender: user[0].gender
+            employeeName: user.employeeName,
+            employeeId: user.employeeId,
+            role: user.role,
           };
+          this.router.navigate(['/home']);
+          /* Stored the user details in session storage */
           sessionStorage.setItem('currentUser', JSON.stringify(userDetails));
-          this.router.navigate(['/cart']);
           this.spinner = false;
         } else {
-          this.api.alertConfig = this.api.modalConfig('Error', 'Username/Password is not valid', true, ['Ok']);
+          this.api.alertConfig = this.api.modalConfig('Error', 'Username/Password is not valid', true, [{ name: 'Ok' }]);
           this.spinner = false;
         }
-      },
-        error => {
-          this.spinner = false;
-        });
+      });
     }
   }
   /* Modal Action */

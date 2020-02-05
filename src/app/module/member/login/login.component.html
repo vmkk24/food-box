@@ -1,25 +1,25 @@
-<div class="container login-container ">
+<div id="login" class="login-container">
     <div class="row">
-        <div class="col-md-6 login-form">
-            <h3>Sign In</h3>
+        <div class="col-md-6 login-form" style="margin-top:5rem;margin-left:20rem">
+            <h1 style="color:orange; text-align:center;">LOGIN</h1>
             <form [formGroup]="loginForm" (ngSubmit)="onClickSubmit()">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Username *" name="username"
-                        formControlName="username" required />
-                    <div class="error" *ngIf="submitted  && login.username.errors  && login.username.errors.required">
-                        Username is <strong>required</strong>
+                    <input type="text" class="form-control" placeholder="Employee Id *" name="employeeId"
+                        formControlName="employeeId" required />
+                    <div class="error" style="color: red"   *ngIf="submitted  && login.employeeId.errors  && login.employeeId.errors.required">
+                        Employee Id is <strong>required</strong>
                     </div>
                 </div>
                 <div class="form-group">
                     <input type="password" class="form-control" name="password" placeholder="Your Password *"
                         formControlName="password" required />
-                    <div class="error" *ngIf="submitted  && login.password.errors  && login.password.errors.required">
+                    <div class="error" style="color: red" *ngIf="submitted  && login.password.errors  && login.password.errors.required">
                         Password is <strong>required</strong>
                     </div>
                 </div>
                 <div class="form-group">
-                    <a routerLink="/member/register" class="ForgetPwd" title="Sign up">Not an member? Sign up here.</a>
-                    <button class="btnSubmit" aria-label="SignIn">Sign in</button>
+                    <!-- <a routerLink="/member/register" class="ForgetPwd" title="Sign up">Not an member? Sign up here.</a> -->
+                    <button class="btnSubmit" aria-label="SignIn">Login</button>
                 </div>
             </form>
         </div>

@@ -1,0 +1,18 @@
+<div class="ex1">
+<h4>Order Summary</h4>
+<div class="order-container" *ngFor="let order of orderSummary">
+    <div class="row pb-10">
+        <div class="col-md-3">Order Date - <strong>{{order.orderDate}}</strong></div>
+        <div class="col-md-3">Amount - <strong>{{order.totalAmount | currency: "INR"}}</strong></div>
+        <div class="col-md-3">Status - <strong>{{order.orderStatus}}</strong></div>
+    </div>
+    <div class="food-container">
+        <div class="row pb-10" *ngFor="let food of order.orderedFood">
+            <div class="col-md-4">Order Date - <strong>{{food.foodName}}</strong></div>
+            <div class="col-md-3">Quantity - <strong>{{food.quantity}}</strong></div>
+            <div class="col-md-3">Vendor - <strong>{{food.vendorName}}</strong></div>
+        </div>
+    </div>
+    
+</div>
+</div>

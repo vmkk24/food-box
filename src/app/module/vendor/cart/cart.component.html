@@ -1,0 +1,89 @@
+<div class="container ex1" *ngIf="cardFlag">
+    <div class="row">
+        <div class="col-sm-12 col-md-10 col-md-offset-1">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th width="25%">Product</th>
+                        <th width="25%">Quantity</th>
+                        <th width="15%" class="text-center">Price</th>
+                        <th width="15%" class="text-center">Total</th>
+                        <th width="20%"> </th>
+                    </tr>
+                </thead>
+                <tbody class="tbody">
+                    <tr *ngFor="let cart of cartDetails.foodList">
+                        <td width="25%">
+                            <h4 class="media-heading"><a href="javascript:void(0)">{{cart.foodName}}</a></h4>
+                        </td>
+                        <td width="25%" style="text-align: center">
+                            <div class="input-container">
+                                <button class="btn btn-info btn-sm button-add" (click)="addQuantity(cart)">+</button>
+                                <input type="text" class="form-control text-center input-width" name="quantity"
+                                    [(ngModel)]="cart.quantity" style="padding:0%;">
+                                <button class="btn btn-info btn-danger button-add"
+                                    (click)="removeQuantity(cart)">-</button>
+                            </div>
+                        </td>
+                        <td width="15%" class="text-center"><strong>{{cart.price | currency: "INR"}}</strong></td>
+                        <td width="15%" class="col-md-1 text-center">
+                            <strong>{{cart.totalPrice | currency: "INR"}}</strong></td>
+                        <td width="20%" class="">
+                            <button type="button" class="btn btn-danger" (click)="removeCart(cart)">
+                                <span class="glyphicon glyphicon-remove"></span> Remove
+                            </button></td>
+                    </tr>
+                    <tr>
+                        <td>   </td>
+                        <td>   </td>
+                        <td>   </td>
+                        <td>
+                            <h3>Total</h3>
+                        </td>
+                        <td class="text-right">
+                            <h3><strong>{{totalAmount | currency: "INR"}}</strong></h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>   </td>
+                        <td>   </td>
+                        <td>   </td>
+                        <td>
+                            <!-- <button type="button" class="btn btn-default">
+                                <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+                            </button></td> -->
+                        <td>
+                            <button type="button" class="btn btn-success" (click)="checkout()">
+                                Pay <span class="glyphicon glyphicon-play"></span>
+                            </button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row" *ngIf="paymentOptionFlag" style="margin-left:20rem">
+        <!-- Default checked -->
+        <!-- <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" id="PhonePay" name="PhonePay" value="PhonePay" ([ngModel])="paymentType">
+            <label class="custom-control-label" for="PhonePay">PhonePay</label>
+        </div>
+        <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" id="GooglePay" name="GooglePay" ([ngModel])="paymentType">
+            <label class="custom-control-label" for="GooglePay"  value="GooglePay" >GooglePay</label>
+        </div> -->
+        <div class="ui-g" style="width:280px;margin-bottom:10px;">
+            <div class="ui-g-6"><p-radioButton name="group1" value="PAYTM" label="PAYTM" [(ngModel)]="paymentType" inputId="preopt1"></p-radioButton></div>
+            <div class="ui-g-6"><p-radioButton name="group2" value="PHONEPE" label="PHONEPE" [(ngModel)]="paymentType" inputId="preopt2"></p-radioButton></div>
+           
+        </div>
+        <div class="ui-g-12"> <button pButton type="button"  label="place order" icon="pi pi-money-bill" style="margin-right: .25em"
+         (click)="placeOrder()" ></button></div>
+           </div>
+           <!-- [routerLink]="['/vendor/list', product.vendorId]" -->
+</div>
+<div class="container ex1" *ngIf="!cardFlag">
+    <strong> cart data are available. Please <a routerLink="/shops">click here</a> to select food</strong>
+</div>
+<app-spinner [spinner]="spinner"></app-spinner>
+<app-alert [alertObj]="api.alertConfig" *ngIf="api.alertConfig?.modalShow" (buttonAction)="modalAction($event)">
+</app-alert>

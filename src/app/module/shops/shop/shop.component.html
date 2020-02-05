@@ -1,0 +1,18 @@
+<div class="ui-g ex1" style="width:100%" align="center">
+    <div class="ui-g-4" *ngFor="let product of products">
+      <p-card header="{{product.name}}" [style]="{width: '320px'}" styleClass="ui-card-shadow">
+        <div>
+          <img src="{{product.imageUrl}}" width="250" height="150" alt="Product Image" /><br />
+          <div align="left">
+            <b>Name: {{product.vendorName}}</b><br />
+            <b>Ratings: {{product.rating}}</b><br />
+          </div>
+        </div>
+        <p-footer>
+          <button pButton type="button" class="clr" label="view Menu" icon="pi pi-bookmark" style="margin-right: .25em"
+          [routerLink]="['/vendor/list', product.vendorId]" (click)="viewMenu(product.vendorId)"></button>
+        </p-footer>
+      </p-card>
+      <!-- <p-toast [style]="{marginTop: '80px'}" position="top-center"></p-toast> -->
+    </div>
+  </div>

@@ -1,7 +1,14 @@
 .login-container{
-    margin-top: 7%;
-    margin-bottom: 7%;
-    min-height: 390px;
+    padding: 0 0 0 0;
+    min-height: 430px;
+    font-size: large;
 }
 
 
+.form-control{
+    font-size: 1rem !important;
+}
+
+#login{
+    background-image: url('../../../../assets/images/login.jpg');
+}
