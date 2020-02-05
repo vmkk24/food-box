@@ -8,7 +8,8 @@ import { OrderSummaryComponent } from './order-summary/order-summary.component';
 import { SharedModuleModule } from '../../shared/shared-module.module';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import {ButtonModule} from 'primeng/button';
-
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ToastModule} from 'primeng/toast';
 @NgModule({
   declarations: [ListComponent, CartComponent, OrderSummaryComponent],
   imports: [
@@ -16,7 +17,9 @@ import {ButtonModule} from 'primeng/button';
     VendorRoutingModule,
     SharedModuleModule,
     RadioButtonModule,
-    ButtonModule
+    ButtonModule,
+    ConfirmDialogModule,
+    ToastModule
   ]
 })
 export class VendorModule { }
