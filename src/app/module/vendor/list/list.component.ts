@@ -31,11 +31,11 @@ export class ListComponent implements OnInit {
     this.api.getList(this.url.urlConfig().vendorMenu).subscribe(list => {
       this.spinner = false;
       list.forEach(item => {
-        if (item.nonVeg) {
-          this.menulistNonVeg = this.addQuantityFlag(item.nonVeg);
+        if (item.categoryName === 'VEG') {
+          this.menulistNonVeg = this.addQuantityFlag(item.itemList);
         }
-        if (item.veg) {
-          this.menulistVeg = this.addQuantityFlag(item.veg);
+        if (item.categoryName === 'NON_VEG') {
+          this.menulistVeg = this.addQuantityFlag(item.itemList);
         }
 
       });

@@ -1,26 +1,70 @@
 {
-    "ItemcategoryList": [
+    "itemcategoryList": [
         {
-            "veg": [
-                {
-                    "foodId": 1,
-                    "foodName": "Meal",
-                    "price": 50,
-                    "calories": 300,
-                    "status": "Available"
-                }
-            ]
+          "categoryName": "VEG",
+          "itemList": [
+            {
+              "foodId": 2,
+              "foodName": "Veg Biriyani",
+              "price": 100,
+              "calories": 80,
+              "status": null
+            },
+            {
+              "foodId": 3,
+              "foodName": "South Indian Meals",
+              "price": 70,
+              "calories": 70,
+              "status": null
+            }
+          ]
         },
         {
-            "nonVeg": [
-                {
-                    "foodId": 2,
-                    "foodName": "Non-Meal",
-                    "price": 50,
-                    "calories": 300,
-                    "status": "Available"
-                }
-            ]
+          "categoryName": "NON_VEG",
+          "itemList": [
+            {
+              "foodId": 1,
+              "foodName": "Mutton Biriyani",
+              "price": 150,
+              "calories": 60,
+              "status": null
+            }
+          ]
         }
-    ]
+      ],
+    "employees":[
+        {
+          "foodOrderId": 101,
+          "totalAmount": 200,
+          "orderDate": "2020-02-05",
+          "paymentType": "PAYTM",
+          "orderStatus": "ORDERED",
+          "orderedFood": [
+            {
+              "foodName": "Mutton Biriyani",
+              "quantity": 2,
+              "vendorName": "KFC "
+            },
+            {
+              "foodName": "South Indian Meals",
+              "quantity": 1,
+              "vendorName": "A2B"
+            }
+          ]
+        },
+        {
+          "foodOrderId": 102,
+          "totalAmount": 200,
+          "orderDate": "2020-02-05",
+          "paymentType": "PAYTM",
+          "orderStatus": "ORDERED",
+          "orderedFood": [
+            {
+              "foodName": "Mutton Biriyani",
+              "quantity": 2,
+              "vendorName": "KFC "
+            }
+          ]
+        }
+      ]
 }
