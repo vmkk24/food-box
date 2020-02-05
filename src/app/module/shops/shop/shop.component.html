@@ -1,8 +1,8 @@
-<div class="ui-g" style="width:100%" align="center">
+<div class="ui-g ex1" style="width:100%" align="center">
     <div class="ui-g-4" *ngFor="let product of products">
       <p-card header="{{product.name}}" [style]="{width: '320px'}" styleClass="ui-card-shadow">
         <div>
-          <img src="{{product.image}}" width="150" height="150" alt="Product Image" /><br />
+          <img src="{{product.imageUrl}}" width="250" height="150" alt="Product Image" /><br />
           <div align="left">
             <b>Name: {{product.vendorName}}</b><br />
             <b>Ratings: {{product.rating}}</b><br />
