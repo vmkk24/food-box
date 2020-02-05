@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class UrlConfig {
     serverConfig = false;
-    private apiHost = 'http://10.117.189.181:8080/flightbooking/';
+    private apiHost = 'http://10.117.189.175:8080/mealbox/';
     private apiMock = 'http://localhost:3000/';
     url = {};
 
@@ -11,7 +11,8 @@ export class UrlConfig {
             userLogin: this.apiMock + 'users',
             userList: this.apiMock + 'users',
             vendorMenu: this.apiMock + 'ItemcategoryList',
-            brand: this.apiMock + 'brands'
+            brand: this.apiMock + 'brands',
+            vendors: this.apiHost + 'vendors'
         };
     }
     urlConfig() {

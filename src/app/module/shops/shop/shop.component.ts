@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Service } from 'src/app/service/service';
+import { UrlConfig } from 'src/app/service/url-config';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-shop',
@@ -6,32 +9,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./shop.component.css']
 })
 export class ShopComponent implements OnInit {
-  cars: any[];
-
+  spinner = false;
+  products: any;
   responsiveOptions;
-  constructor() {
-    this.responsiveOptions = [
-      {
-          breakpoint: '1024px',
-          numVisible: 3,
-          numScroll: 3
-      },
-      {
-          breakpoint: '768px',
-          numVisible: 2,
-          numScroll: 2
-      },
-      {
-          breakpoint: '560px',
-          numVisible: 1,
-          numScroll: 1
-      }
-  ];
-   }
-
-  ngOnInit() {
+  constructor(public api: Service,
+              private url: UrlConfig,
+              private router: Router) {
   }
 
-  getVendors = () => {
+  ngOnInit() {
+    this.geProductList();
+  }
+
+  /* get data list */
+  private geProductList(): void {
+    this.spinner = true;
+    this.api.getList(this.url.urlConfig().vendors).subscribe(data => {
+      if (data) {
+        this.spinner = false;
+        this.products = data;
+        console.log('productd', this.products);
+      }
+    }, error => {
+      this.spinner = false;
+    });
+  }
+  viewMenu() {
+    // this.router.navigate(['/vendor']);
   }
 }
