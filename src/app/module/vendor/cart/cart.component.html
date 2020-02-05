@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container ex1">
     <div class="row">
         <div class="col-sm-12 col-md-10 col-md-offset-1">
             <table class="table table-hover">
@@ -20,7 +20,7 @@
                             <div class="input-container">
                                 <button class="btn btn-info btn-sm button-add" (click)="addQuantity(cart)">+</button>
                                 <input type="text" class="form-control text-center input-width" name="quantity"
-                                    [(ngModel)]="cart.quantity">
+                                    [(ngModel)]="cart.quantity" style="padding:0%;">
                                 <button class="btn btn-info btn-danger button-add"
                                     (click)="removeQuantity(cart)">-</button>
                             </div>
@@ -71,15 +71,15 @@
             <input type="radio" class="custom-control-input" id="GooglePay" name="GooglePay" ([ngModel])="paymentType">
             <label class="custom-control-label" for="GooglePay"  value="GooglePay" >GooglePay</label>
         </div> -->
-        <div class="ui-g" style="width:250px;margin-bottom:10px;">
+        <div class="ui-g" style="width:280px;margin-bottom:10px;">
             <div class="ui-g-6"><p-radioButton name="group2" value="Option 1" label="PAYTM" [(ngModel)]="paymentType" inputId="preopt1"></p-radioButton></div>
             <div class="ui-g-6"><p-radioButton name="group2" value="Option 2" label="PHONE PAY" [(ngModel)]="paymentType" inputId="preopt2"></p-radioButton></div>
            
         </div>
-        <div class="ui-g-12"> <button pButton type="button"  label="place order" icon="pi pi-money-bill" style="margin-right: .25em">
-        </button></div>
+        <div class="ui-g-12"> <button pButton type="button"  label="place order" icon="pi pi-money-bill" style="margin-right: .25em"
+         (click)="placeOrder()" [routerLink]="['/vendor/order-summary']"></button></div>
            </div>
-   
+           <!-- [routerLink]="['/vendor/list', product.vendorId]" -->
 </div>
 <app-spinner [spinner]="spinner"></app-spinner>
 <app-alert [alertObj]="api.alertConfig" *ngIf="api.alertConfig?.modalShow" (buttonAction)="modalAction($event)">

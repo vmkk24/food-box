@@ -1,6 +1,6 @@
 You can add global styles to this file, and also import other style files
 
-body { font-family: 'Open Sans', sans-serif; color: #555; font-size: 10rem; font-weight: 300; }
+body { font-family: 'Open Sans', sans-serif; color: #555; font-size: 10px; font-weight: 300; }
 li { list-style: none;}
 a:hover { text-decoration: none; }
 

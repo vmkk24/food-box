@@ -75,20 +75,23 @@ export class CartComponent implements OnInit {
     this.paymentOptionFlag = true;
     this.cartDetails.paymentType = this.paymentType;
     this.cartDetails.totalAmount = this.totalAmount;
-    // this.api.postCall(this.url.urlConfig().placeOrder, this.cartDetails, 'post').subscribe(order => {
-    //   if (order) {
-    //     this.spinner = false;
-    //   } else {
-    //     this.cartDetails = [];
-    //     sessionStorage.setItem('cart', JSON.stringify(this.cartDetails));
-    //     this.messageService.sendMessage({ cart: this.cartDetails });
-    //   }
-    // });
   }
   ngOnInit() {
     if (this.cartDetails) {
       this.calculatePrice(this.cartDetails);
     }
+  }
+
+  placeOrder  = () => {
+this.api.postCall(this.url.urlConfig().placeOrder, this.cartDetails, 'post').subscribe(order => {
+      if (order) {
+        this.spinner = false;
+      } else {
+        this.cartDetails = [];
+        sessionStorage.setItem('cart', JSON.stringify(this.cartDetails));
+        this.messageService.sendMessage({ cart: this.cartDetails });
+      }
+    });
   }
 
 }
