@@ -18,7 +18,9 @@ export class OrderSummaryComponent implements OnInit {
     /* get Order list */
   private geOrderSummary(): void {
     this.spinner = true;
-    this.api.getList(this.url.urlConfig().orderSummary).subscribe(order => {
+    const user = this.api.loggedUser();
+    const params = `/${user.employeeId}/orders`;
+    this.api.getList(this.url.urlConfig().orderSummary.concat(params)).subscribe(order => {
         this.spinner = false;
         this.orderSummary = order;
     }, error => {
