@@ -15,6 +15,7 @@ export class CartComponent implements OnInit {
   totalAmount = 0;
   paymentOptionFlag = false;
   paymentType = 'PAYTM';
+  cardFlag = false;
   constructor(
     public api: Service,
     private url: UrlConfig,
@@ -59,6 +60,10 @@ export class CartComponent implements OnInit {
     if (action === 'Ok') {
       this.spinner = false;
       this.api.alertConfigDefaultValue();
+    } else {
+      this.spinner = false;
+      this.api.alertConfigDefaultValue();
+      this.router.navigate(['/vendor/order-summary']);
     }
   }
 
@@ -76,8 +81,11 @@ export class CartComponent implements OnInit {
     this.cartDetails.totalAmount = this.totalAmount;
   }
   ngOnInit() {
-    if (this.cartDetails) {
+    if (this.cartDetails && this.cartDetails.foodList) {
       this.calculatePrice(this.cartDetails);
+      this.cardFlag = true;
+    } else {
+      this.cardFlag = false;
     }
   }
 
@@ -86,12 +94,14 @@ export class CartComponent implements OnInit {
     const params = `/${user.employeeId}/orders`;
     this.cartDetails.vendorId =  Number(this.cartDetails.vendorId);
     this.api.postCall(this.url.urlConfig().placeOrder.concat(params), this.cartDetails, 'post').subscribe(order => {
-      if (order) {
+      if (order.statusCode === 200) {
         this.spinner = false;
-      } else {
         this.cartDetails = [];
         sessionStorage.setItem('cart', JSON.stringify(this.cartDetails));
         this.messageService.sendMessage({ cart: this.cartDetails });
+        this.api.alertConfig = this.api.modalConfig('', order.message, true, [{ name: 'Close' }]);
+      } else {
+        this.api.alertConfig = this.api.modalConfig('', order.message, true, [{ name: 'Ok' }]);
       }
     });
   }

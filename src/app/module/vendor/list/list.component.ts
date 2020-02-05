@@ -115,7 +115,6 @@ export class ListComponent implements OnInit {
       }
     }
     this.finalList = cartList;
-    console.log(this.finalList);
     sessionStorage.setItem('cart', JSON.stringify(cartList));
     this.messageService.sendMessage({ cart: cartList });
   }

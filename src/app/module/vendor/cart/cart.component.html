@@ -1,4 +1,4 @@
-<div class="container ex1">
+<div class="container ex1" *ngIf="cardFlag">
     <div class="row">
         <div class="col-sm-12 col-md-10 col-md-offset-1">
             <table class="table table-hover">
@@ -80,6 +80,9 @@
          (click)="placeOrder()" ></button></div>
            </div>
            <!-- [routerLink]="['/vendor/list', product.vendorId]" -->
+</div>
+<div class="container ex1" *ngIf="!cardFlag">
+    <strong> cart data are available. Please <a routerLink="/shops">click here</a> to select food</strong>
 </div>
 <app-spinner [spinner]="spinner"></app-spinner>
 <app-alert [alertObj]="api.alertConfig" *ngIf="api.alertConfig?.modalShow" (buttonAction)="modalAction($event)">
