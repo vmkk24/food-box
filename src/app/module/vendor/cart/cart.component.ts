@@ -14,7 +14,7 @@ export class CartComponent implements OnInit {
   spinner = false;
   totalAmount = 0;
   paymentOptionFlag = false;
-  paymentType = 'PHONEPE';
+  paymentType = 'PAYTM';
   constructor(
     public api: Service,
     private url: UrlConfig,
