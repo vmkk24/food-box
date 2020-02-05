@@ -15,7 +15,7 @@ export class CartComponent implements OnInit {
   totalAmount = 0;
   paymentOptionFlag = false;
   // paymentType = 'GooglePay';
-  paymentType = 'Option 1';
+  paymentType = 'PAYTM';
   constructor(
     public api: Service,
     private url: UrlConfig,
@@ -82,8 +82,11 @@ export class CartComponent implements OnInit {
     }
   }
 
-  placeOrder  = () => {
-this.api.postCall(this.url.urlConfig().placeOrder, this.cartDetails, 'post').subscribe(order => {
+  placeOrder = () => {
+    const user = this.api.loggedUser();
+    const params = `/${user.employeeId}/orders`;
+    this.cartDetails.vendorId =  Number(this.cartDetails.vendorId);
+    this.api.postCall(this.url.urlConfig().placeOrder.concat(params), this.cartDetails, 'post').subscribe(order => {
       if (order) {
         this.spinner = false;
       } else {

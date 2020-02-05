@@ -72,12 +72,12 @@
             <label class="custom-control-label" for="GooglePay"  value="GooglePay" >GooglePay</label>
         </div> -->
         <div class="ui-g" style="width:280px;margin-bottom:10px;">
-            <div class="ui-g-6"><p-radioButton name="group2" value="Option 1" label="PAYTM" [(ngModel)]="paymentType" inputId="preopt1"></p-radioButton></div>
-            <div class="ui-g-6"><p-radioButton name="group2" value="Option 2" label="PHONE PAY" [(ngModel)]="paymentType" inputId="preopt2"></p-radioButton></div>
+            <div class="ui-g-6"><p-radioButton name="group2" value="PAYTM" label="PAYTM" [(ngModel)]="paymentType" inputId="preopt1"></p-radioButton></div>
+            <div class="ui-g-6"><p-radioButton name="group2" value="PHONEPE" label="PHONEPE" [(ngModel)]="paymentType" inputId="preopt2"></p-radioButton></div>
            
         </div>
         <div class="ui-g-12"> <button pButton type="button"  label="place order" icon="pi pi-money-bill" style="margin-right: .25em"
-         (click)="placeOrder()" [routerLink]="['/vendor/order-summary']"></button></div>
+         (click)="placeOrder()" ></button></div>
            </div>
            <!-- [routerLink]="['/vendor/list', product.vendorId]" -->
 </div>

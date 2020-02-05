@@ -56,7 +56,7 @@
     </tbody>
 </table>
 <div class="checkout-container">
-    <a *ngIf="cartFlag" routerLink="/vendor/cart"  class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a>
+    <a *ngIf="finalList?.foodList?.length" routerLink="/vendor/cart"  class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a>
     
 </div>
 </div>

@@ -17,6 +17,7 @@ export class ListComponent implements OnInit {
   vendorId = 0;
   total = 0;
   cartFlag = false;
+  finalList: any;
   constructor(
     public api: Service,
     private url: UrlConfig,
@@ -28,10 +29,10 @@ export class ListComponent implements OnInit {
   */
   public getMenuList(id) {
     this.spinner = true;
-    const params = `${id}`
+    const params = `${id}`;
     this.api.getList(this.url.urlConfig().vendorMenu.concat(params)).subscribe(list => {
       this.spinner = false;
-      list.forEach(item => {
+      list.itemcategoryList.forEach(item => {
         if (item.categoryName === 'VEG') {
           this.menulistNonVeg = this.addQuantityFlag(item.itemList);
         }
@@ -52,6 +53,11 @@ export class ListComponent implements OnInit {
   }
   public addFood(item) {
     item.quantity += 1;
+    this.foodList = [];
+    const cartList = JSON.parse(sessionStorage.getItem('cart'));
+    if (cartList.foodList && cartList.foodList.length) {
+      this.foodList = cartList.foodList;
+    }
     if (this.foodList && this.foodList.length) {
       const index = this.foodList.findIndex(card => card.foodId === item.foodId);
       if (index !== -1) {
@@ -81,13 +87,14 @@ export class ListComponent implements OnInit {
     this.cartFlag = true;
     sessionStorage.setItem('cart', JSON.stringify(finalList));
     this.messageService.sendMessage({ cart: finalList });
+    this.finalList = finalList;
   }
 
   public removeItem(item, type) {
     const cartList = JSON.parse(sessionStorage.getItem('cart'));
     const index = cartList.foodList.findIndex(card => card.foodId === item.foodId);
     if (index !== -1) {
-      if (cartList.foodList[index].quantity ) {
+      if (cartList.foodList[index].quantity > 1 ) {
         cartList.foodList[index].quantity -= 1;
         if (type === 'menulistVeg') {
           const vegIndex =  this.menulistVeg.findIndex(card => card.foodId === item.foodId);
@@ -97,18 +104,25 @@ export class ListComponent implements OnInit {
           this.menulistNonVeg[nonVegIndex].quantity -= 1;
         }
       } else {
+        if (type === 'menulistVeg') {
+          const vegIndex =  this.menulistVeg.findIndex(card => card.foodId === item.foodId);
+          this.menulistVeg[vegIndex].quantity -= 1;
+        } else {
+          const nonVegIndex =  this.menulistNonVeg.findIndex(card => card.foodId === item.foodId);
+          this.menulistNonVeg[nonVegIndex].quantity -= 1;
+        }
         cartList.foodList.splice(index, 1);
       }
     }
-    if (cartList.foodList.length) {
-      this.cartFlag = false;
-    }
+    this.finalList = cartList;
+    console.log(this.finalList);
     sessionStorage.setItem('cart', JSON.stringify(cartList));
     this.messageService.sendMessage({ cart: cartList });
   }
 
   ngOnInit() {
     this.activeRoute.params.subscribe(params => {
+      sessionStorage.setItem('cart', JSON.stringify({}));
       this.getMenuList(params.id);
       this.vendorId = params.id;
     });
