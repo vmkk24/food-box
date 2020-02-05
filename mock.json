@@ -1,0 +1,26 @@
+{
+    "ItemcategoryList": [
+        {
+            "veg": [
+                {
+                    "foodId": 1,
+                    "foodName": "Meal",
+                    "price": 50,
+                    "calories": 300,
+                    "status": "Available"
+                }
+            ]
+        },
+        {
+            "nonVeg": [
+                {
+                    "foodId": 2,
+                    "foodName": "Non-Meal",
+                    "price": 50,
+                    "calories": 300,
+                    "status": "Available"
+                }
+            ]
+        }
+    ]
+}

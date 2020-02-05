@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
 
   /* On init call logged user and list of the group  */
   ngOnInit() {
-    this.geProductList();
+   // this.geProductList();
     const cartItems = JSON.parse(sessionStorage.getItem('cart'));
     if (cartItems) {
       this.messageService.sendMessage({cart: cartItems});
