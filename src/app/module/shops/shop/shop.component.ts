@@ -28,7 +28,6 @@ export class ShopComponent implements OnInit {
       if (data) {
         this.spinner = false;
         this.products = data;
-        console.log('productd', this.products);
       }
     }, error => {
       this.spinner = false;

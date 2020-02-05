@@ -26,9 +26,10 @@ export class ListComponent implements OnInit {
 
   /* Get Destinaton
   */
-  public getDestination(id) {
+  public getMenuList(id) {
     this.spinner = true;
-    this.api.getList(this.url.urlConfig().vendorMenu).subscribe(list => {
+    const params = `${id}`
+    this.api.getList(this.url.urlConfig().vendorMenu.concat(params)).subscribe(list => {
       this.spinner = false;
       list.forEach(item => {
         if (item.categoryName === 'VEG') {
@@ -108,7 +109,7 @@ export class ListComponent implements OnInit {
 
   ngOnInit() {
     this.activeRoute.params.subscribe(params => {
-      this.getDestination(params.id);
+      this.getMenuList(params.id);
       this.vendorId = params.id;
     });
   }
