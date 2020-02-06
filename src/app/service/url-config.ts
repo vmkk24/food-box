@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class UrlConfig {
     serverConfig = true;
-    private apiHost = 'http://10.117.189.181:8080/mealbox/';
+    private apiHost = 'http://13.235.42.225:9090/mealbox/';
     private apiMock = 'http://localhost:3000/';
     url = {};
 
